@@ -1,0 +1,111 @@
+{
+  "modelo": "LightGBM",
+  "semilla": 17,
+  "esquema_validacion": {
+    "tipo": "temporal (sin mezclar filas entre periodos)",
+    "meses_entrenamiento_busqueda": [
+      202103,
+      202104,
+      202105
+    ],
+    "mes_validacion": 202106,
+    "meses_modelo_final": [
+      202103,
+      202104,
+      202105,
+      202106
+    ],
+    "mes_prediccion": 202108
+  },
+  "target": "1 = BAJA+2, 0 = CONTINUA y BAJA+1 (objective=binary)",
+  "n_filas_modelo_final": 654066,
+  "n_features": 152,
+  "ganancia_acierto": 1072500,
+  "costo_estimulo": 27500,
+  "optuna": {
+    "study_name": "competencia01_lgbm_temporal_v2",
+    "storage": "sqlite:///../../data/optimization_lgbm_competencia01.db",
+    "n_trials_completos": 50,
+    "mejor_ganancia_validacion_202106": 411317500.0,
+    "mejores_params": {
+      "n_estimators": 325,
+      "learning_rate": 0.029661584688011007,
+      "num_leaves": 171,
+      "max_depth": 15,
+      "min_child_samples": 819,
+      "feature_fraction": 0.7450192516702081,
+      "bagging_fraction": 0.732556307246056,
+      "bagging_freq": 1,
+      "lambda_l1": 0.05704490064078276,
+      "lambda_l2": 2.239138774770875e-05
+    },
+    "params_fijos": {
+      "objective": "binary",
+      "random_state": 17,
+      "n_jobs": -1,
+      "verbose": -1
+    },
+    "params_en_el_borde_del_rango": [
+      "lambda_l1",
+      "lambda_l2"
+    ]
+  },
+  "punto_de_corte": {
+    "umbral_teorico": 0.025,
+    "umbral_empirico_montecarlo": 0.012,
+    "umbral_empirico_mes_entero": 0.012,
+    "ganancia_corte_empirico": 409951666.6666667,
+    "ganancia_corte_teorico": 347101071.42857146,
+    "envios_medios_en_validacion": 12997.428571428572,
+    "dispersion_corte_remuestreos": {
+      "min": 0.012,
+      "mediana": 0.012,
+      "max": 0.012
+    }
+  },
+  "calidad": {
+    "auc_temporal_202106": 0.9000349167285914,
+    "techo_teorico_202106": 1177605000,
+    "ganancia_como_pct_del_techo": 0.34812323883362134
+  },
+  "entrega": {
+    "archivo": "competencia_01_prediccion_lgbm.csv",
+    "columnas": [
+      "numero_de_cliente",
+      "Predicted"
+    ],
+    "n_clientes": 164647,
+    "n_marcados_1": 13596,
+    "porcentaje_marcados": 8.257666401452806
+  },
+  "comparacion_vs_random_forest": {
+    "ganancia_rf": 416098571.42857146,
+    "ganancia_lgbm": 409951666.6666667,
+    "mejora_porcentual_ganancia": -1.4772712967508876,
+    "auc_rf": 0.8987591415479416,
+    "auc_lgbm": 0.9000349167285914,
+    "mejora_porcentual_auc": 0.14194850674370083,
+    "desvio_ganancia_lgbm_remuestreos": 11464391.975526657
+  },
+  "chequeo_independiente_202105": {
+    "descripcion": "entrena 202103-202104 y mide 202105; ni los hiperparametros ni el umbral fueron elegidos mirando este mes",
+    "meses_entrenamiento": [
+      202103,
+      202104
+    ],
+    "mes_medicion": 202105,
+    "ganancia_rf": 210760000.0,
+    "ganancia_lgbm": 227067500.0,
+    "diferencia_pct": 7.737473903966597,
+    "auc_rf": 0.8798293142468534,
+    "auc_lgbm": 0.8870190329947675,
+    "coincide_con_202106": false
+  },
+  "versiones": {
+    "python": "3.11.6",
+    "lightgbm": "4.7.0",
+    "optuna": "4.9.0",
+    "pandas": "2.3.3",
+    "numpy": "2.4.4"
+  }
+}

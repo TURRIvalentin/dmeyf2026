@@ -1,0 +1,44 @@
+# --- datos (el dataset NO se sube: se descarga, ver README) ---
+datos/
+*.csv
+*.csv.gz
+*.parquet
+# excepcion: el archivo enviado al bot, para comparar por hash (90 KB)
+!referencia/submit_03_k10000.csv
+
+# --- salidas intermedias y finales (se regeneran corriendo el paquete) ---
+trabajo/
+salida/
+*.npz
+!config/orden_filas.npz
+
+# --- modelos pesados, estudios de Optuna, logs ---
+*.pkl
+*.joblib
+*.txt.model
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# --- credenciales y tokens: nunca al repo ---
+.env
+.env.*
+*token*
+*Token*
+*secret*
+*credential*
+*credenciales*
+*.pem
+*.key
+kaggle.json
+.git-credentials
+!requirements*.txt
+
+# --- Python / entornos / notebooks ---
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/

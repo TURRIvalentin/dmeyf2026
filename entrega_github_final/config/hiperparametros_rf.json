@@ -1,0 +1,79 @@
+{
+  "semilla": 17,
+  "esquema_validacion": {
+    "tipo": "temporal (sin mezclar filas entre periodos)",
+    "meses_entrenamiento_busqueda": [
+      202103,
+      202104,
+      202105
+    ],
+    "mes_validacion": 202106,
+    "meses_modelo_final": [
+      202103,
+      202104,
+      202105,
+      202106
+    ],
+    "mes_prediccion": 202108,
+    "motivo": "el 98,5% de los clientes aparece en mas de un mes; un ShuffleSplit sobre filas cliente-mes deja al mismo cliente en train y test"
+  },
+  "n_filas_modelo_final": 654066,
+  "n_features": 152,
+  "ganancia_acierto": 1072500,
+  "costo_estimulo": 27500,
+  "optuna": {
+    "study_name": "competencia01_rf_temporal",
+    "storage": "sqlite:///../../data/optimization_rf_competencia01.db",
+    "n_trials_completos": 75,
+    "mejor_ganancia_validacion_202106": 411180000.0,
+    "mejores_params": {
+      "n_estimators": 200,
+      "max_depth": 18,
+      "min_samples_split": 204,
+      "min_samples_leaf": 221,
+      "max_features": 0.09345079818148697
+    },
+    "params_fijos": {
+      "criterion": "gini",
+      "max_samples": 0.3,
+      "random_state": 17,
+      "n_jobs": -1
+    }
+  },
+  "punto_de_corte": {
+    "umbral_teorico": 0.025,
+    "umbral_empirico_montecarlo": 0.022,
+    "umbral_empirico_mes_entero": 0.02,
+    "ganancia_corte_empirico": 416098571.42857146,
+    "ganancia_corte_teorico": 405270119.04761904,
+    "envios_medios_en_validacion": 10792.95238095238,
+    "dispersion_corte_remuestreos": {
+      "min": 0.018,
+      "mediana": 0.022,
+      "max": 0.026
+    }
+  },
+  "calidad": {
+    "auc_temporal_202106": 0.8987591415479416,
+    "auc_oob_modelo_final": 0.8988483605819003,
+    "techo_teorico_202106": 1177605000,
+    "ganancia_como_pct_del_techo": 0.3533430746545501
+  },
+  "entrega": {
+    "archivo": "competencia_01_prediccion.csv",
+    "columnas": [
+      "numero_de_cliente",
+      "Predicted"
+    ],
+    "n_clientes": 164647,
+    "n_marcados_1": 10436,
+    "porcentaje_marcados": 6.33840883830255
+  },
+  "versiones": {
+    "python": "3.11.6",
+    "sklearn": "1.8.0",
+    "optuna": "4.9.0",
+    "pandas": "2.3.3",
+    "numpy": "2.4.4"
+  }
+}

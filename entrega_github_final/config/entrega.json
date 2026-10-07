@@ -1,0 +1,70 @@
+{
+  "descripcion": "Receta de submit_03: blend 50/50 de rankings entre 10 RF (152 variables crudas, clase ternaria) y 10 LightGBM (152 crudas + lag1 + delta1 = 456 columnas, positivos BAJA+1 y BAJA+2). Corte final: top 10.000 clientes por score.",
+  "semillas": [
+    252443,
+    645419,
+    856841,
+    750383,
+    537181,
+    100003,
+    200017,
+    300023,
+    400031,
+    500057
+  ],
+  "meses_entrenamiento": [
+    202103,
+    202104,
+    202105,
+    202106
+  ],
+  "mes_a_predecir": 202108,
+  "n_envios": 10000,
+  "archivo_submit": "submit_03_k10000.csv",
+  "lgbm_target_positivos": [
+    "BAJA+1",
+    "BAJA+2"
+  ],
+  "lgbm_features": "crudas + lag de orden 1 + delta de orden 1 de las 152 crudas",
+  "rf_features": "152 crudas",
+  "rf_target": "clase_ternaria (CONTINUA / BAJA+1 / BAJA+2), score = P(BAJA+2)",
+  "conteo_clase_ternaria_esperado": {
+    "202103": {
+      "BAJA+1": 1019,
+      "BAJA+2": 960,
+      "CONTINUA": 160921,
+      "nan": 0
+    },
+    "202104": {
+      "BAJA+1": 964,
+      "BAJA+2": 1139,
+      "CONTINUA": 161181,
+      "nan": 0
+    },
+    "202105": {
+      "BAJA+1": 1143,
+      "BAJA+2": 870,
+      "CONTINUA": 161755,
+      "nan": 0
+    },
+    "202106": {
+      "BAJA+1": 874,
+      "BAJA+2": 1098,
+      "CONTINUA": 162142,
+      "nan": 0
+    },
+    "202107": {
+      "BAJA+1": 1103,
+      "BAJA+2": 0,
+      "CONTINUA": 0,
+      "nan": 163245
+    },
+    "202108": {
+      "BAJA+1": 0,
+      "BAJA+2": 0,
+      "CONTINUA": 0,
+      "nan": 164647
+    }
+  },
+  "sha256_submit_esperado": "8a68cae8543efaafaf6df9f905fad2845ec2387d4ed7ec3e6d437601b9728fde"
+}
