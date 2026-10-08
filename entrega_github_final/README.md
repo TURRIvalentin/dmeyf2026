@@ -112,11 +112,6 @@ blend (+4,4M, pero -11M en 202106).
   LightGBM usa todos los núcleos, y con otra cantidad de hilos el resultado puede cambiar
   levemente.
 
-## Herramientas
-
-Usé Claude como asistente para escribir y revisar el código y para explorar variantes. Las
-decisiones de validación y la elección de la entrega final las tomé yo.
-
 ## Verificación
 
 Corrí el paquete desde cero (sin `trabajo/` ni `salida/`) en la misma máquina de la entrega.
