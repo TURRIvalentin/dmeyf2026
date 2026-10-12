@@ -7,7 +7,10 @@ El código para reproducir mi entrega final de la Primera Competencia: `base_k11
 El problema es elegir a quién mandarle un estímulo para retener a los clientes que se van en dos meses (BAJA+2). Cada BAJA+2 acertado gana 1.072.500 y cada estímulo cuesta 27.500, así que lo que importa es armar una buena lista y saber dónde cortarla.
 
 sha256 del archivo entregado:
-`6d2f0f0419890ec7087bffef0e03fc1d0499af349dce67eaa844bcce79fa3712`
+
+```
+6d2f0f0419890ec7087bffef0e03fc1d0499af349dce67eaa844bcce79fa3712
+```
 
 Hay una copia en `referencia/` y el último paso del código compara contra ella.
 
@@ -29,17 +32,24 @@ Antes había entregado un blend de Random Forest y LightGBM, que sigue en la car
 
 ## Cómo correrlo
 
-1. Bajar el crudo, que no está en el repo:
-   https://storage.googleapis.com/open-courses/dmeyf2026-9c6f/competencia_01_crudo.csv
-   Dejarlo en `datos/competencia_01_crudo.csv`, o indicar la ruta con `--crudo`.
-2. Instalar las dependencias (yo usé Python 3.11.6 en Windows 11):
+**1. Bajar el crudo**, que no está en el repo:
+
+https://storage.googleapis.com/open-courses/dmeyf2026-9c6f/competencia_01_crudo.csv
+
+Dejarlo en `datos/competencia_01_crudo.csv`, o indicar la ruta con `--crudo`.
+
+**2. Instalar las dependencias.** Yo usé Python 3.11.6 en Windows 11:
+
 ```
-   pip install -r requirements_minimos.txt
+pip install -r requirements_minimos.txt
 ```
-   `requirements.txt` tiene la lista completa de mi entorno.
-3. Correr:
+
+`requirements.txt` tiene la lista completa de mi entorno.
+
+**3. Correr:**
+
 ```
-   python correr_todo.py --crudo RUTA/competencia_01_crudo.csv
+python correr_todo.py --crudo RUTA/competencia_01_crudo.csv
 ```
 
 Tarda entre 80 y 90 minutos con 16 núcleos.
