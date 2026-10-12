@@ -2,9 +2,9 @@
 
 **Entrega final:** `base_k11000.csv`, 11.000 clientes de 202108 a los que mando estímulo. Ganancia en el Public Leaderboard: **108,57**.
 
-sha256: `6d2f0f0419890ec7087bffef0e03fc1d0499af349dce67eaa844bcce79fa3712`
+**El archivo de mi entrega final está en `referencia/base_k11000.csv`**: es el mismo que mandé al bot. Este paquete lo reproduce exactamente desde el crudo, y el último paso compara los hashes para comprobarlo.
 
-Este paquete lo reproduce exactamente desde el crudo. Hay una copia en `referencia/` y el último paso compara los hashes.
+sha256: `6d2f0f0419890ec7087bffef0e03fc1d0499af349dce67eaa844bcce79fa3712`
 
 ## El problema
 
@@ -45,7 +45,7 @@ Los dos cambios que más aportaron en validación fueron usar **BAJA+1 y BAJA+2 
 
 ### 4. Más de 100 variantes sin mejora
 
-Probé objetivos de ranking (lambdarank, rank_xendcg), selección de variables, LightGBM dart, regresión logística, XGBoost, ExtraTrees, variables de historia, variables de tarjetas, hojas de Random Forest como variables, pesos por mes, corte por probabilidad calibrada y usar 202107 con etiqueta parcial. Ninguna pasó el umbral de validación. También mandé 16 variantes al Public Leaderboard y ninguna superó al blend.
+Probé objetivos de ranking (lambdarank, rank_xendcg), selección de variables, LightGBM dart, regresión logística, XGBoost, ExtraTrees, variables de historia, variables de tarjetas, pesos por mes, corte por probabilidad calibrada y usar 202107 con etiqueta parcial. Ninguna pasó el umbral de validación. También mandé 16 variantes al Public Leaderboard y ninguna superó al blend.
 
 Una hipótesis que vale la pena contar: como 202106 tiene aguinaldo y 202108 no, probé variantes que ganaban en 202104/05 aunque perdieran en 202106. Todas dieron peor en el público (entre 92,8 y 96,3). También probé el peso de 202106 en el entrenamiento: 0 dio 95,65, 0,5 dio 94,02, 2 dio 96,31 y 3 dio 95,23. El óptimo era el peso normal. **202106, el mes más reciente, era el que mejor representaba a 202108.**
 
@@ -84,7 +84,7 @@ Tarda entre 80 y 90 minutos con 16 núcleos. No vuelve a correr la bayesiana: lo
 | `src/01_preparar_datos.py` | Lee el crudo, calcula `clase_ternaria` y deja las filas en el orden con el que entrené. |
 | `src/02_entrenar_y_predecir.py` | Arregla `ccajas_depositos`, arma las 760 columnas, entrena los 10 modelos y predice 202108. |
 | `src/03_generar_submit.py` | Promedia las probabilidades y escribe los 11.000 clientes. |
-| `src/04_verificar.py` | Chequea el formato y compara el hash con el archivo entregado. |
+| `src/04_verificar.py` | Chequea el formato y compara el hash con el archivo entregado (`referencia/base_k11000.csv`). |
 
 ## Limitaciones
 
