@@ -70,10 +70,6 @@ Todo lo configurable (hiperparámetros, semillas, meses, corte y hash esperado) 
 - "En Limpio" no detallaba algunas cosas, como el target, los rangos de búsqueda o cómo validar la bayesiana. Esas las decidí yo.
 - Para que el resultado salga idéntico hay que respetar el orden de filas (`config/orden_filas.npz`) y las versiones de las librerías. Con otra cantidad de núcleos, LightGBM puede dar resultados levemente distintos.
 
-## Herramientas
-
-Usé Claude como asistente para escribir y revisar el código. Las decisiones sobre el modelo y la entrega final las tomé yo.
-
 ## Verificación
 
 Corrí el paquete desde cero y tardó 88 minutos. El hash del archivo generado coincide con el que entregué:
