@@ -1,0 +1,76 @@
+{
+  "descripcion": "Baseline 'En Limpio' de la cátedra: promedio de probabilidades de 10 LightGBM (uno por cada uno de los 10 mejores juegos de la bayesiana), 152 crudas + lag1, lag2, delta1, delta2 (760 columnas), ccajas_depositos en NA en 202105, positivos BAJA+1 y BAJA+2, sin undersampling. Corte final: top 11.000 clientes por probabilidad.",
+  "semillas": [
+    252443,
+    645419,
+    856841,
+    750383,
+    537181,
+    100003,
+    200017,
+    300023,
+    400031,
+    500057
+  ],
+  "meses_entrenamiento": [
+    202103,
+    202104,
+    202105,
+    202106
+  ],
+  "mes_a_predecir": 202108,
+  "n_envios": 11000,
+  "archivo_submit": "base_k11000.csv",
+  "lgbm_target_positivos": [
+    "BAJA+1",
+    "BAJA+2"
+  ],
+  "ordenes_lag_y_delta": [
+    1,
+    2
+  ],
+  "variables_en_na": {
+    "ccajas_depositos": [
+      202105
+    ]
+  },
+  "conteo_clase_ternaria_esperado": {
+    "202103": {
+      "BAJA+1": 1019,
+      "BAJA+2": 960,
+      "CONTINUA": 160921,
+      "nan": 0
+    },
+    "202104": {
+      "BAJA+1": 964,
+      "BAJA+2": 1139,
+      "CONTINUA": 161181,
+      "nan": 0
+    },
+    "202105": {
+      "BAJA+1": 1143,
+      "BAJA+2": 870,
+      "CONTINUA": 161755,
+      "nan": 0
+    },
+    "202106": {
+      "BAJA+1": 874,
+      "BAJA+2": 1098,
+      "CONTINUA": 162142,
+      "nan": 0
+    },
+    "202107": {
+      "BAJA+1": 1103,
+      "BAJA+2": 0,
+      "CONTINUA": 0,
+      "nan": 163245
+    },
+    "202108": {
+      "BAJA+1": 0,
+      "BAJA+2": 0,
+      "CONTINUA": 0,
+      "nan": 164647
+    }
+  },
+  "sha256_submit_esperado": "6d2f0f0419890ec7087bffef0e03fc1d0499af349dce67eaa844bcce79fa3712"
+}

@@ -1,0 +1,36 @@
+{
+  "descripcion": "Baseline 'En Limpio': LightGBM con parámetros fijos de la cátedra y los 10 mejores juegos de una optimización bayesiana (Optuna TPE, 30 trials). Un modelo por juego; el modelo i usa la semilla i de entrega.json.",
+  "params_fijos": {
+    "objective": "binary",
+    "max_bin": 31,
+    "min_child_samples": 0,
+    "feature_fraction": 0.5,
+    "feature_fraction_bynode": 0.2,
+    "learning_rate": 0.005,
+    "metric": "auc",
+    "verbose": -1,
+    "n_jobs": -1
+  },
+  "busqueda": {
+    "metodo": "Optuna TPESampler(seed=252443), 30 trials completos en 75 minutos",
+    "espacio": {
+      "num_iterations": "entero en [500, 2000], paso 50",
+      "num_leaves": "entero en [16, 1024], escala log",
+      "min_sum_hessian_in_leaf": "real en [0.001, 100], escala log"
+    },
+    "validacion": "entrena 202103-202104 (sin undersampling), AUC sobre 202106 completo",
+    "codigo": "mejoras_v11/01_bayesiana.py"
+  },
+  "top10": [
+    {"trial": 17, "auc_202106": 0.9202043194402282, "num_iterations": 1650, "num_leaves": 63, "min_sum_hessian_in_leaf": 11.575685555743108},
+    {"trial": 1, "auc_202106": 0.9200393749970444, "num_iterations": 1700, "num_leaves": 606, "min_sum_hessian_in_leaf": 19.503393128560752},
+    {"trial": 16, "auc_202106": 0.9196202303377528, "num_iterations": 1700, "num_leaves": 71, "min_sum_hessian_in_leaf": 4.610837597257742},
+    {"trial": 26, "auc_202106": 0.9195146302405952, "num_iterations": 1400, "num_leaves": 68, "min_sum_hessian_in_leaf": 3.798714432843089},
+    {"trial": 24, "auc_202106": 0.9194724777717816, "num_iterations": 1750, "num_leaves": 48, "min_sum_hessian_in_leaf": 16.76379910798291},
+    {"trial": 29, "auc_202106": 0.9194040793081404, "num_iterations": 1150, "num_leaves": 254, "min_sum_hessian_in_leaf": 11.007825810356946},
+    {"trial": 19, "auc_202106": 0.9191642468351496, "num_iterations": 1500, "num_leaves": 564, "min_sum_hessian_in_leaf": 6.492957892954166},
+    {"trial": 21, "auc_202106": 0.9190498115455006, "num_iterations": 1700, "num_leaves": 73, "min_sum_hessian_in_leaf": 3.1937165429598044},
+    {"trial": 9, "auc_202106": 0.9186325746622866, "num_iterations": 1000, "num_leaves": 289, "min_sum_hessian_in_leaf": 1.069825824851859},
+    {"trial": 18, "auc_202106": 0.9184796992484214, "num_iterations": 1600, "num_leaves": 55, "min_sum_hessian_in_leaf": 31.511034437754947}
+  ]
+}
